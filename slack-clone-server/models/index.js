@@ -1,6 +1,6 @@
 import Sequelize from 'sequelize';
 
-const sequelize = new Sequelize('slack', 'postgres', 'postgres', { dialect: 'postgres' });
+const sequelize = new Sequelize('slack', 'postgres', 'postgres', { dialect: 'postgres', define: { underscored: true } });
 
 const models = {
   User: sequelize.import('./user'),
