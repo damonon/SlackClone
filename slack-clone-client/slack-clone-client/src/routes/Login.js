@@ -21,7 +21,7 @@ class Login extends React.Component {
       variables: { email, password },
     });
     console.log(response);
-    const {ok, token, refreshToken} = response.data.login;
+    const { ok, token, refreshToken } = response.data.login;
 
     if (ok) {
       localStorage.setItem('token', token);
@@ -29,7 +29,7 @@ class Login extends React.Component {
     }
   }
 
-  onChange = e => {
+  onChange = (e) => {
     const { name, value } = e.target;
     this[name] = value;
   }
@@ -59,7 +59,7 @@ class Login extends React.Component {
       </Container>
     );
   }
-};
+}
 
 const loginMutation = gql`
   mutation($email: String!, $password: String!) {
