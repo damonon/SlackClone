@@ -28,7 +28,7 @@ const ViewTeam = ({ data: { loading, allTeams }, match: { params: { teamId, chan
         team={team}
       />
       <Header channelName={channel.name} />
-      <Messages>
+      <Messages channelId={channel.id}>
         <ul className="message-list">
           <li />
           <li />
