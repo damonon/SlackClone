@@ -5,7 +5,6 @@ import { makeExecutableSchema } from 'graphql-tools';
 import { createServer } from 'http';
 import { execute, subscribe } from 'graphql';
 import { SubscriptionServer } from 'subscriptions-transport-ws';
-
 import path from 'path';
 import { fileLoader, mergeTypes, mergeResolvers } from 'merge-graphql-schemas';
 import cors from 'cors';
