@@ -23,7 +23,6 @@ const schema = makeExecutableSchema({
   resolvers,
 });
 // const myGraphQLSchema = // ... define or import your schema here!
-const PORT = 8080;
 
 const app = express();
 app.use(cors('*'));
@@ -89,11 +88,11 @@ models.sequelize.sync({}).then(() => {
               throw new Error('Invalid auth tokens');
             }
 
-            const member = await models.Member.findOne({ where: { teamId: 1, userId: user.id } });
+            // const member = await models.Member.findOne({ where: { teamId: 1, userId: user.id } });
 
-            if (!member) {
-              throw new Error('Missing auth tokens!');
-            }
+            // if (!member) {
+            //   throw new Error('Missing auth tokens!');
+            // }
 
             return true;
           }
