@@ -32,9 +32,9 @@ const ViewTeam = ({
     <AppLayout>
       <Sidebar
         teams={teams.map(t => ({
-        id: t.id,
-        letter: t.name.charAt(0).toUpperCase(),
-      }))}
+          id: t.id,
+          letter: t.name.charAt(0).toUpperCase(),
+        }))}
         team={team}
         username={username}
       />

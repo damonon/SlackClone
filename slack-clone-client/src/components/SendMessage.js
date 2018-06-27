@@ -21,10 +21,10 @@ const SendMessage = ({
   <SendMessageWrapper>
     <Input
       onKeyDown={(e) => {
-      if (e.keyCode === ENTER_KEY && !isSubmitting) {
-        handleSubmit(e);
-      }
-    }}
+        if (e.keyCode === ENTER_KEY && !isSubmitting) {
+          handleSubmit(e);
+        }
+      }}
       onChange={handleChange}
       onBlur={handleBlur}
       name="message"

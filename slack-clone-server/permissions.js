@@ -9,10 +9,23 @@ const createResolver = (resolver) => {
   };
   return baseResolver;
 };
-
+// Requires Auth
 export default createResolver((parent, args, { user }) => {
   if (!user || !user.id) {
     throw new Error('Not authenticated');
+  }
+});
+
+// Require Team access
+export const requiresTeamAccess = createResolver(async (parent, { channelId }, { user, models }) => {
+  if (!user || !user.id) {
+    throw new Error('Not authenticated');
+  }
+  // Check if part of the team
+  const channel = await models.Channel.findOne({ where: { id: channelId } });
+  const member = await models.Member.findOne({ where: { teamId: channel.teamId, userId: user.id } });
+  if (!member) {
+    throw new Error("You have to be a member of the team to subscribe to it's messages");
   }
 });
 

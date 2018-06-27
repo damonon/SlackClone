@@ -37,9 +37,9 @@ const ViewTeam = ({
     <AppLayout>
       <Sidebar
         teams={teams.map(t => ({
-        id: t.id,
-        letter: t.name.charAt(0).toUpperCase(),
-      }))}
+          id: t.id,
+          letter: t.name.charAt(0).toUpperCase(),
+        }))}
         team={team}
         username={username}
       />
@@ -47,12 +47,14 @@ const ViewTeam = ({
       {channel && (
         <MessageContainer channelId={channel.id} />
       )}
-      {channel && <SendMessage
+      {channel && (
+      <SendMessage
         placeholder={channel.name}
         onSubmit={async (text) => {
           await mutate({ variables: { text, channelId: channel.id } });
-      }}
-      />}
+        }}
+      />
+      )}
     </AppLayout>
   );
 };

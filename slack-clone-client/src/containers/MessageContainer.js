@@ -38,23 +38,22 @@ class MessageContainer extends React.Component {
     }
   }
 
-  subscribe = channelId =>
-    this.props.data.subscribeToMore({
-      document: newChannelMessageSubscription,
-      variables: {
-        channelId,
-      },
-      updateQuery: (prev, { subscriptionData }) => {
-        if (!subscriptionData) {
-          return prev;
-        }
+  subscribe = channelId => this.props.data.subscribeToMore({
+    document: newChannelMessageSubscription,
+    variables: {
+      channelId,
+    },
+    updateQuery: (prev, { subscriptionData }) => {
+      if (!subscriptionData) {
+        return prev;
+      }
 
-        return {
-          ...prev,
-          messages: [...prev.messages, subscriptionData.data.newChannelMessage],
-        };
-      },
-    });
+      return {
+        ...prev,
+        messages: [...prev.messages, subscriptionData.data.newChannelMessage],
+      };
+    },
+  });
 
   render() {
     const { data: { loading, messages } } = this.props;
@@ -64,13 +63,21 @@ class MessageContainer extends React.Component {
           {messages.map(m => (
             <Comment key={`${m.id}-message`}>
               <Comment.Content>
-                <Comment.Author as="a">{m.user.username}</Comment.Author>
+                <Comment.Author as="a">
+                  {m.user.username}
+                </Comment.Author>
                 <Comment.Metadata>
-                  <div>{m.created_at}</div>
+                  <div>
+                    {m.created_at}
+                  </div>
                 </Comment.Metadata>
-                <Comment.Text>{m.text}</Comment.Text>
+                <Comment.Text>
+                  {m.text}
+                </Comment.Text>
                 <Comment.Actions>
-                  <Comment.Action>Reply</Comment.Action>
+                  <Comment.Action>
+Reply
+                  </Comment.Action>
                 </Comment.Actions>
               </Comment.Content>
             </Comment>
