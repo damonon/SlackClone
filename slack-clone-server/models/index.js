@@ -8,6 +8,7 @@ const models = {
   Message: sequelize.import('./message'),
   Team: sequelize.import('./team'),
   Member: sequelize.import('./member.js'),
+  DirectMessage: sequelize.import('./directMessage.js'),
 };
 
 
